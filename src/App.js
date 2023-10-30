@@ -13,9 +13,6 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
   // const [watchedMovies, setWatchedMovies] = useState([]);
 
-
-  
-
   function handleSelectMovie(id) {
     if (selectedId === id) {
       setSelectedId(null);
@@ -44,7 +41,7 @@ export default function App() {
   //Custom hook is used to fetch movies.
   const [movies, isLoading, error] = useMovies(query, handleCloseMovieDetails);
 
-  const [watchedMovies,setWatchedMovies] = useLocalStorageState([],"watched");
+  const [watchedMovies, setWatchedMovies] = useLocalStorageState([], "watched");
 
   // const [watchedMovies, setWatchedMovies] = useState(function () {
   //   const stored = localStorage.getItem("watched");
@@ -110,7 +107,7 @@ export default function App() {
   //   [query]
   // );
   // ? Custom hook used for local storage;
-  
+
   // useLocalStorageState(watchedMovies);
 
   // useEffect(
@@ -189,7 +186,6 @@ export default function App() {
     </>
   );
 }
-
 
 function MovieDetails({
   selectedId,
@@ -323,7 +319,7 @@ function MovieDetails({
 
   // ? creating custom hook for key press.
 
-  useKey("Escape",onCloseMovie);
+  useKey("Escape", onCloseMovie);
 
   //effect used to remove movie details when escape key is clicked.
   // useEffect(
@@ -403,7 +399,6 @@ function MovieDetails({
   );
 }
 
-
 function Loader() {
   return <p className="loader">Loading...</p>;
 }
@@ -457,19 +452,18 @@ function Search({ query, setQuery }) {
 
   // ? using useEffect for the ref because useRef select the DOM elemtent and it has been done after the DOM load. So, useEffect also work after the DOM loaded so this useEffect is perfect for this cause.
 
-
   // ? Custom hook useKey is used to implement the functionality of clicking enter key and it will make focus on search bar by clearing the already present text.
-  useKey('Enter',function(){
+  useKey("Enter", function () {
     if (document.activeElement === inputEl.current) return;
-          inputEl.current.focus();
-          setQuery("");
-  })
+    inputEl.current.focus();
+    setQuery("");
+  });
 
   // useEffect(
   //   function () {
   //     // inputEl.current.focus();
   //     function callback(e) {
-        
+
   //       if (e.code === "Enter") {
   //         if (document.activeElement === inputEl.current) return;
   //         inputEl.current.focus();
@@ -513,6 +507,7 @@ function Search({ query, setQuery }) {
   }
   return (
     <input
+      autoFocus
       type="text"
       className="search"
       value={query}
@@ -700,7 +695,7 @@ function WatchedList({ watchedMovies, onDeleteWatched }) {
   );
 }
 
-function WatchedMovie({movie, onDeleteWatched }) {
+function WatchedMovie({ movie, onDeleteWatched }) {
   function handleDeleteWatched() {
     onDeleteWatched(movie.imdbId);
   }
