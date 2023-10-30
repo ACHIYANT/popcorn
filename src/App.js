@@ -22,7 +22,7 @@ export default function App() {
     } else setSelectedId(id);
   }
   function handleCloseMovieDetails() {
-    console.log('invoked close movie');
+    // console.log('invoked close movie');
     setSelectedId(null);
   }
   function handleAddWatched(movie) {
@@ -285,7 +285,7 @@ function MovieDetails({
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}&plot=full`
+            `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}&plot=full`
           );
           if (!res.ok) {
             throw new Error("Something went wrong");
