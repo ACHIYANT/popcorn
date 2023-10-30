@@ -5,6 +5,17 @@
 /.pnp
 .pnp.js
 
+# folders
+/src/components
+
+#files
+/src/Rating-final.js
+/src/RatingNew.js
+/src/App v1.js
+/src/App v2.js
+/src/App v3.js
+/src/App-fin.js
+
 # testing
 /coverage
 
